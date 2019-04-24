@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Final_FoodWeb_app</string>
+    <string name="loginbutton">Login</string>
+    <string name="organization_button">Organization</string>
+    <string name="organization">Organization</string>
+    <string name="food_donator">Food Donator</string>
+    <string name="logo">logo</string>
 </resources>
