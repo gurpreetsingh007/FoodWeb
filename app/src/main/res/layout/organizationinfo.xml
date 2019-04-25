@@ -33,7 +33,7 @@
         <!--/>-->
 
     <Button
-        android:id="@+id/donator_button"
+        android:id="@+id/available_button"
         android:layout_width="239dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoimage"
@@ -50,10 +50,10 @@
         />
 
     <Button
-        android:id="@+id/organization_button"
+        android:id="@+id/view_pickups"
         android:layout_width="239dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/donator_button"
+        android:layout_below="@+id/available_button"
         android:layout_centerHorizontal="true"
         android:background="@drawable/create_roundshape"
         android:fontFamily="sans-serif-medium"
