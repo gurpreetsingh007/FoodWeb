@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".DonatorSide"></activity>
-        <activity android:name=".DonatorCreate"></activity>
+        <activity android:name=".OrganizationLogin"></activity>
+        <activity android:name=".OrganizationCreate"></activity>
 
         <activity android:name=".MainActivity" >
             <intent-filter>

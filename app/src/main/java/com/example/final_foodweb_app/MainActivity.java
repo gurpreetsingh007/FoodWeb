@@ -14,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         organization = findViewById(R.id.organization_button);
         food_donator = findViewById(R.id.donator_button);
-        food_donator.setOnClickListener(new View.OnClickListener() {
+        organization.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,DonatorSide.class);
+                Intent intent = new Intent(MainActivity.this, OrganizationLogin.class);
                 intent.putExtra("donation","passing");
                 startActivity(intent);
             }

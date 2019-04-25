@@ -10,16 +10,27 @@
     android:background="@drawable/foodphoto"
     >
 
-    <ImageView
-        android:id="@+id/logoimage"
-        android:layout_width="270dp"
-        android:layout_height="280dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/food"
-        android:contentDescription="@string/logo"
-        android:layout_marginTop="90dp"
-        android:layout_marginBottom="50dp"
-        />
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/my_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--style="@style/HeaderBar"-->
+        <!--app:theme="@style/ActionBarThemeOverlay"-->
+        <!--app:popupTheme="@style/ActionBarPopupThemeOverlay"-->
+        <!--android:elevation="4dp"-->
+        <!--/>-->
+
+
+    <!--<ImageView-->
+        <!--android:id="@+id/logoimage"-->
+        <!--android:layout_width="270dp"-->
+        <!--android:layout_height="280dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:background="@drawable/food"-->
+        <!--android:contentDescription="@string/logo"-->
+        <!--android:layout_marginTop="90dp"-->
+        <!--android:layout_marginBottom="50dp"-->
+        <!--/>-->
 
     <Button
         android:id="@+id/donator_button"
@@ -30,7 +41,7 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/roundshape_button"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/food_donator"
+        android:text="All donation"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"

@@ -6,31 +6,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class DonatorSide extends AppCompatActivity {
+public class OrganizationCreate extends AppCompatActivity {
+
+    private Button create_account;
 
 
-    private Button login,create_account;
-    protected void onCreate(Bundle savedInstanceState){
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.donator_login);
+        setContentView(R.layout.create_account);
         Intent intent = getIntent();
         String passing = intent.getStringExtra("donation");
-
-        login = findViewById(R.id.login);
-        create_account = findViewById(R.id.CreateAccount);
-
-
+        create_account  = findViewById(R.id.createaccount);
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DonatorSide.this,DonatorCreate.class);
+                Intent intent = new Intent(OrganizationCreate.this, OrganizationLogin.class);
                 intent.putExtra("donation","passing");
                 startActivity(intent);
             }
         });
 
-
-
     }
-
 }
