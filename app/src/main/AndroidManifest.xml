@@ -12,6 +12,8 @@
 
         <activity android:name=".OrganizationLogin"></activity>
         <activity android:name=".OrganizationCreate"></activity>
+        <activity android:name=".OrganizationInfo"></activity>
+
 
         <activity android:name=".MainActivity" >
             <intent-filter>

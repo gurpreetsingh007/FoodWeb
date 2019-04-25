@@ -30,7 +30,7 @@ public class OrganizationLogin extends AppCompatActivity {
         });
         // after account creation come back to login
         Intent intent_1 = getIntent();
-        String getting = intent_1.getStringExtra("donation");
+        String getting = intent_1.getStringExtra("hello");
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

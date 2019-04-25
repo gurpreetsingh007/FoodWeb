@@ -10,7 +10,7 @@ public class OrganizationInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.organization_login);
+        setContentView(R.layout.organizationinfo);
         Intent intent = getIntent();
         String passing = intent.getStringExtra("login");
 

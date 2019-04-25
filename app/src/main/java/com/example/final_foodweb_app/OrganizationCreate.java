@@ -22,7 +22,7 @@ public class OrganizationCreate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OrganizationCreate.this, OrganizationLogin.class);
-                intent.putExtra("donation","passing");
+                intent.putExtra("hello","passing");
                 startActivity(intent);
             }
         });
