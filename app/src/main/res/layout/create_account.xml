@@ -20,44 +20,12 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         />
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="239dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/forgot_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/roundshape_button"
-        android:fontFamily="sans-serif-medium"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-
-        />
-
-    <Button
-        android:id="@+id/CreateAccount"
-        android:layout_width="239dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/login"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/create_roundshape"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="Create Account"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        />
-
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/username"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="enter username"
         android:background="@drawable/roundshape"
         android:paddingLeft="10dp"
         android:inputType="textEmailAddress"
@@ -71,26 +39,55 @@
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:ems="10"
-        android:hint="password"
+        android:hint="enter username"
         android:background="@drawable/roundshape"
         android:paddingLeft="10dp"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/email"
+        android:layout_below="@+id/username"
         android:layout_marginBottom="15dp"
         />
 
     <EditText
-        android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/email"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
         android:ems="10"
-        android:text="forgot password?"
-        android:textColor="@android:color/holo_blue_dark"
+        android:hint="enter password"
+        android:background="@drawable/roundshape"
+        android:paddingLeft="10dp"
+        android:inputType="textPassword"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/password"
-        android:textAlignment="center"
         android:layout_marginBottom="15dp"
-        android:background="@android:color/transparent"
         />
+    <EditText
+        android:id="@+id/organizationname"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:hint="enter email"
+        android:background="@drawable/roundshape"
+        android:paddingLeft="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@+id/email"
+        />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="239dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/organizationname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/roundshape_button"
+        android:fontFamily="sans-serif-medium"
+        android:text="Create Account"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+
+        />
+
 </RelativeLayout>

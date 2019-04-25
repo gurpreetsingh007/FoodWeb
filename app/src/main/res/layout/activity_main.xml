@@ -11,25 +11,6 @@
     android:alpha="0.9"
     >
 
-    <!--<Button-->
-        <!--android:id="@+id/button"-->
-        <!--style="@style/Base.TextAppearance.AppCompat"-->
-        <!--android:layout_width="222dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="155dp"-->
-        <!--android:layout_marginTop="450dp"-->
-        <!--android:layout_marginEnd="168dp"-->
-        <!--android:layout_marginBottom="233dp"-->
-        <!--android:background="?attr/colorPrimaryDark"-->
-        <!--android:fontFamily="sans-serif-medium"-->
-        <!--android:text="@string/loginbutton"-->
-        <!--android:textAllCaps="false"-->
-        <!--android:textColor="@android:color/background_light"-->
-        <!--android:textSize="20sp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
     <ImageView
         android:id="@+id/logoimage"
         android:layout_width="270dp"
@@ -48,12 +29,13 @@
         android:layout_below="@+id/logoimage"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/roundshape_button"
         android:fontFamily="sans-serif-medium"
         android:text="@string/food_donator"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+
 
         />
 
@@ -63,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/donator_button"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/holo_purple"
+        android:background="@drawable/create_roundshape"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="@string/organization"
