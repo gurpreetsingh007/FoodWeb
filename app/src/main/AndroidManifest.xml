@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".Foodlist"
+            android:label="Food list"
+
+            ></activity>
+
         <activity android:name=".viewNotifications"
             android:label="View Notifications"
             android:screenOrientation="portrait"></activity>
@@ -29,11 +34,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".OrganizationInfo"
-            android:label=" "
+            android:label="Organization Menu"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Organizationitems"
-            android:label=" "
+            android:label="Restaurant List"
             android:screenOrientation="portrait" />
         <activity
             android:name=".DonateLogin"
@@ -41,7 +46,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".DonatorInfo"
-            android:label=" "
+            android:label="Donatir options "
             android:screenOrientation="portrait" />
         <activity
             android:name=".addItem"
