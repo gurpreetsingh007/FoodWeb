@@ -14,10 +14,13 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".Foodlist"
-            android:label="Food list"
-
-            ></activity>
-
+            android:label="Food list"></activity>
+        <activity android:name=".donations_expanded"
+            android:label=" "
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ViewDonations"
+            android:label="View Donations"
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".viewNotifications"
             android:label="View Notifications"
             android:screenOrientation="portrait"></activity>
@@ -46,7 +49,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".DonatorInfo"
-            android:label="Donatir options "
+            android:label="Donator options "
             android:screenOrientation="portrait" />
         <activity
         android:name=".addItem"

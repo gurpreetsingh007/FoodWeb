@@ -24,6 +24,7 @@ public class DonatorInfo extends AppCompatActivity {
 
         addDonationText = findViewById(R.id.addDonationsText);
         viewNotificationsText = findViewById(R.id.viewNotificationsText);
+        viewAllDonationsText = findViewById(R.id.viewAllDonationsText);
 
 
 
@@ -67,7 +68,17 @@ public class DonatorInfo extends AppCompatActivity {
         viewAllDonationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Add me!");
+                Intent intent = new Intent(DonatorInfo.this, ViewDonations.class);
+                intent.putExtra("donations","viewing donations");
+                startActivity(intent);
+            }
+        });
+        viewAllDonationsText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DonatorInfo.this, ViewDonations.class);
+                intent.putExtra("donations","viewing donations");
+                startActivity(intent);
             }
         });
 
