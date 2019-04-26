@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/reschedule"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rescheduleText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/roundshape_button"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Reschedule"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/orgNameP"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="orgNameP"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pickupTimeP"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/orgNameP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="pickupTime"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/rescheduleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickupTimeP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90sp"
+        android:hint="enter new pickup time"
+        android:textSize="20sp" />
+
+</RelativeLayout>

@@ -49,9 +49,22 @@
             android:label="Donatir options "
             android:screenOrientation="portrait" />
         <activity
-            android:name=".addItem"
+        android:name=".addItem"
+        android:label="Add An Item"
+        android:screenOrientation="portrait" />
+        <activity
+            android:name=".viewPickups"
+            android:label=" "
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrganizationPickups"
             android:label="Add An Item"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".pickups_expanded"
+            android:label="Add An Item"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".MainActivity"
             android:label="Food Web"

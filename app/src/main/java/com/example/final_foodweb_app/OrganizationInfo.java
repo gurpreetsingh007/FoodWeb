@@ -27,6 +27,16 @@ public class OrganizationInfo extends AppCompatActivity {
             }
         });
 
+        view_pickups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrganizationInfo.this, viewPickups.class);
+                intent.putExtra("viewPickups","passing");
+                startActivity(intent);
+            }
+        });
+
+
 
 
     }
