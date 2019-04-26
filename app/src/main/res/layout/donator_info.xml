@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light">
+
+    <ImageButton
+        android:id="@+id/addDonationButton"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/background_light"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29000002"
+        app:srcCompat="@drawable/donateicon" />
+
+    <ImageButton
+        android:id="@+id/viewNotificationsButton"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/viewAllDonationsButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/background_light"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDonationButton"
+        app:layout_constraintVertical_bias="0.29000002"
+        app:srcCompat="@drawable/notificationsicon" />
+
+    <ImageButton
+        android:id="@+id/viewAllDonationsButton"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/addDonationButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/background_light"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintStart_toEndOf="@+id/addDonationButton"
+        app:layout_constraintTop_toTopOf="@+id/addDonationButton"
+        app:srcCompat="@drawable/alldonationsicon" />
+
+    <TextView
+        android:id="@+id/viewNotificationsText"
+        android:layout_width="200dp"
+        android:editable="false"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/viewNotificationsButton"
+        android:layout_below="@id/viewAllDonationsText"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="80dp"
+        android:text="View Notifications"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewNotificationsButton"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+    <TextView
+        android:id="@+id/addDonationsText"
+        android:editable="false"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_toRightOf="@id/addDonationButton"
+        android:text="Add Donation"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDonationButton" />
+
+    <TextView
+        android:id="@+id/viewAllDonationsText"
+        android:layout_width="200dp"
+        android:editable="false"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="95dp"
+        android:layout_below="@id/addDonationsText"
+        android:layout_toRightOf="@id/viewAllDonationsButton"
+        android:text="View All Donations"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAllDonationsButton" />
+
+</RelativeLayout>

@@ -22,6 +22,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        food_donator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, DonateLogin.class);
+                intent2.putExtra("donation","passing");
+                startActivity(intent2);
+            }
+        });
     }
 }

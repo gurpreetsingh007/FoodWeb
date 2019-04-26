@@ -6,8 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class OrganizationLogin extends AppCompatActivity {
-
+public class DonateLogin extends AppCompatActivity {
 
     private Button login,create_account;
     protected void onCreate(Bundle savedInstanceState){
@@ -23,7 +22,7 @@ public class OrganizationLogin extends AppCompatActivity {
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OrganizationLogin.this, OrganizationCreate.class);
+                Intent intent = new Intent(DonateLogin.this, OrganizationCreate.class);
                 intent.putExtra("donation","passing");
                 startActivity(intent);
             }
@@ -35,7 +34,7 @@ public class OrganizationLogin extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OrganizationLogin.this, OrganizationInfo.class);
+                Intent intent = new Intent(DonateLogin.this, DonatorInfo.class);
                 intent.putExtra("login","passing");
                 startActivity(intent);
 
