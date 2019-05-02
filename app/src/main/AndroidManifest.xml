@@ -48,6 +48,10 @@
             android:label="Login"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".DonatorCreate"
+            android:label="Create Account"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".DonatorInfo"
             android:label="Donator options "
             android:screenOrientation="portrait" />

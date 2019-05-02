@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "155798815274",
+    "firebase_url": "https://foodweb-89f5b.firebaseio.com",
+    "project_id": "foodweb-89f5b",
+    "storage_bucket": "foodweb-89f5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155798815274:android:ba8b56ead2b9baaf",
+        "android_client_info": {
+          "package_name": "com.example.final_foodweb_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155798815274-v6tguvceqnclfqc6vismdiuch05dj3vq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.final_foodweb_app",
+            "certificate_hash": "b5e0f96433ac2ce076b9e498b1b09e7be2b30fb2"
+          }
+        },
+        {
+          "client_id": "155798815274-hrpjpkljicj0sf3spc4u57ia1rtok8e3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCltFj1xbbRLaIFYBL5rti6BefYJT8Dvj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155798815274-hrpjpkljicj0sf3spc4u57ia1rtok8e3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

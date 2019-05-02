@@ -17,6 +17,7 @@ public class Organizationitems extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private String[] myDataset;
 
+
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private ArrayList<Double> mdistance = new ArrayList<>();

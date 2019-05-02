@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.UUID;
 
-public class OrganizationCreate extends AppCompatActivity {
+public class DonatorCreate extends AppCompatActivity {
 
     private Button create_account;
     private EditText email,password,organizationname,address;
@@ -36,18 +36,11 @@ public class OrganizationCreate extends AppCompatActivity {
         address = findViewById(R.id.address);
 
         database = FirebaseDatabase.getInstance();
-//        UUID uuid = UUID.randomUUID();
-//        account = database.getReference(uuid.toString());
-
-        organization_ref = database.getReference("Organizations");
-//        account = organization_ref.child(uuid.toString());
-//        donator_ref = database.getReference("Donators");
-
-
+        organization_ref = database.getReference("Donators");
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OrganizationCreate.this, OrganizationLogin.class);
+                Intent intent = new Intent(DonatorCreate.this, DonateLogin.class);
                 intent.putExtra("hello","passing");
 
                 account = organization_ref.child(""+email.getText().toString().hashCode());
