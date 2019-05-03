@@ -62,16 +62,9 @@ public class OrganizationLogin extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Log.d("0","username\n\n"+username);
-//                Log.d("0","password\n\n"+password);
                 username = e_username.getText().toString();
                 password = e_password.getText().toString();
-
-                Log.d("0","username\n\n"+username.length());
-                Log.d("0","password\n\n"+password.length());
                 if(username.length()>0 && password.length()>0){
-//                    emailverification = false;
-//                    passwordverification= false;
                     database = FirebaseDatabase.getInstance();
                     DatabaseReference accountref = database.getReference("Organizations");
                     ValueEventListener valueEventListener = new ValueEventListener() {
@@ -84,13 +77,22 @@ public class OrganizationLogin extends AppCompatActivity {
                                 Map info = (HashMap) data.getValue();
                                 //verify email and password from database
                                 if((""+username.hashCode()).equals(data.getKey())){
-                                    Log.d("0","email true \n");
                                     emailverification = true;
                                 }
                                 if(info.get("user_password").equals(password)){
-                                    Log.d("0","password true \n");
                                     passwordverification= true;
                                 }
+                            }
+                            if(!emailverification){
+                                Toast.makeText(OrganizationLogin.this, "Invalid email", Toast.LENGTH_SHORT).show();
+                            }
+                            if(!passwordverification){
+                                Toast.makeText(OrganizationLogin.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                            }
+                            if(emailverification && passwordverification){
+                                Intent intent = new Intent(OrganizationLogin.this, OrganizationInfo.class);
+                                intent.putExtra("login","passing");
+                                startActivity(intent);
                             }
                         }
                         @Override
@@ -99,19 +101,6 @@ public class OrganizationLogin extends AppCompatActivity {
                         }
                     };
                     accountref.addValueEventListener(valueEventListener);
-                    Log.d("0","emailverification = \n\n"+emailverification);
-                    Log.d("0","passwordverification = \n\n"+passwordverification);
-                    if(emailverification && passwordverification){
-                        Intent intent = new Intent(OrganizationLogin.this, OrganizationInfo.class);
-                        intent.putExtra("login","passing");
-                        startActivity(intent);
-                    }
-                    else if (!emailverification){
-                        Toast.makeText(OrganizationLogin.this, "Invalid email", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(!passwordverification){
-                        Toast.makeText(OrganizationLogin.this, "Invalid password", Toast.LENGTH_SHORT).show();
-                    }
                 }
                 else{
                     Toast.makeText(OrganizationLogin.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
@@ -119,35 +108,4 @@ public class OrganizationLogin extends AppCompatActivity {
             }
         });
     }
-
-    public void verifyaccount(){
-        database = FirebaseDatabase.getInstance();
-        DatabaseReference accountref = database.getReference("Organizations");
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                Iterator<DataSnapshot> iterchildren = children.iterator();
-                while(iterchildren.hasNext()){
-                    DataSnapshot data = iterchildren.next();
-                    Map info = (HashMap) data.getValue();
-                    //verify email and password from database
-                    if((""+username.hashCode()).equals(data.getKey())){
-                        Log.d("0","email true \n");
-                        emailverification = true;
-                    }
-                    if(info.get("user_password").equals(password)){
-                        Log.d("0","password true \n");
-                        passwordverification= true;
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("0", "cancelled");
-            }
-        };
-        accountref.addValueEventListener(valueEventListener);
-    }
-
 }

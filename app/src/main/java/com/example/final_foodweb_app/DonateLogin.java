@@ -60,14 +60,7 @@ public class DonateLogin extends AppCompatActivity {
             public void onClick(View v) {
                 username = e_username.getText().toString();
                 password = e_password.getText().toString();
-                username = e_username.getText().toString();
-                password = e_password.getText().toString();
-
-                Log.d("0","username\n\n"+username.length());
-                Log.d("0","password\n\n"+password.length());
                 if(username.length()>0 && password.length()>0){
-//                    emailverification = false;
-//                    passwordverification= false;
                     database = FirebaseDatabase.getInstance();
                     DatabaseReference accountref = database.getReference("Donators");
                     ValueEventListener valueEventListener = new ValueEventListener() {
@@ -80,13 +73,23 @@ public class DonateLogin extends AppCompatActivity {
                                 Map info = (HashMap) data.getValue();
                                 //verify email and password from database
                                 if((""+username.hashCode()).equals(data.getKey())){
-                                    Log.d("0","email true \n");
                                     emailverification = true;
                                 }
                                 if(info.get("user_password").equals(password)){
-                                    Log.d("0","password true \n");
                                     passwordverification= true;
                                 }
+                            }
+
+                            if(!emailverification){
+                                Toast.makeText(DonateLogin.this, "Invalid email", Toast.LENGTH_SHORT).show();
+                            }
+                            if(!passwordverification){
+                                Toast.makeText(DonateLogin.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                            }
+                            if(emailverification && passwordverification){
+                                Intent intent = new Intent(DonateLogin.this, DonatorInfo.class);
+                                intent.putExtra("login","passing");
+                                startActivity(intent);
                             }
                         }
                         @Override
@@ -95,19 +98,6 @@ public class DonateLogin extends AppCompatActivity {
                         }
                     };
                     accountref.addValueEventListener(valueEventListener);
-                    Log.d("0","emailverification = \n\n"+emailverification);
-                    Log.d("0","passwordverification = \n\n"+passwordverification);
-                    if(emailverification && passwordverification){
-                        Intent intent = new Intent(DonateLogin.this, DonatorInfo.class);
-                        intent.putExtra("login","passing");
-                        startActivity(intent);
-                    }
-                    else if (!emailverification){
-                        Toast.makeText(DonateLogin.this, "Invalid email", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(!passwordverification){
-                        Toast.makeText(DonateLogin.this, "Invalid password", Toast.LENGTH_SHORT).show();
-                    }
                 }
                 else{
                     Toast.makeText(DonateLogin.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
