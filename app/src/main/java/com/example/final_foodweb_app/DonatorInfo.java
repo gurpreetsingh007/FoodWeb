@@ -6,10 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DonatorInfo extends AppCompatActivity {
-    private ImageButton addDonationButton, viewNotificationsButton, viewAllDonationsButton;
+    private ImageView addDonationButton, viewNotificationsButton, viewAllDonationsButton;
     private TextView addDonationText, viewNotificationsText, viewAllDonationsText;
 
     @Override

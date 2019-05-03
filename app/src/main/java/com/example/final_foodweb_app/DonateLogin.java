@@ -22,18 +22,19 @@ import java.util.Map;
 
 public class DonateLogin extends AppCompatActivity {
 
+
     private Button login,create_account;
     String username,password;
     EditText e_username,e_password;
     FirebaseDatabase database;
     boolean passwordverification;
     boolean emailverification;
+
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.organization_login);
         Intent intent = getIntent();
         String passing = intent.getStringExtra("donation");
-
 
         login = findViewById(R.id.login);
         create_account = findViewById(R.id.CreateAccount);
@@ -42,7 +43,8 @@ public class DonateLogin extends AppCompatActivity {
         username = e_username.getText().toString();
         password = e_password.getText().toString();
 
-
+//        Log.d("0","OUTSIDEusername\n\n"+username);
+//        Log.d("0","OUTSIDEpassword\n\n"+password);
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +56,8 @@ public class DonateLogin extends AppCompatActivity {
         // after account creation come back to login
         Intent intent_1 = getIntent();
         String getting = intent_1.getStringExtra("hello");
-
+        emailverification = false;
+        passwordverification= false;
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +82,6 @@ public class DonateLogin extends AppCompatActivity {
                                     passwordverification= true;
                                 }
                             }
-
                             if(!emailverification){
                                 Toast.makeText(DonateLogin.this, "Invalid email", Toast.LENGTH_SHORT).show();
                             }
@@ -104,9 +106,5 @@ public class DonateLogin extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
-
 }
