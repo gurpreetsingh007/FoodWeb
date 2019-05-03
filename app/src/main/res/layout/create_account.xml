@@ -69,7 +69,7 @@
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:ems="10"
-        android:hint="enter address"
+        android:hint="enter street address"
         android:background="@drawable/roundshape"
         android:paddingLeft="10dp"
         android:inputType="text"

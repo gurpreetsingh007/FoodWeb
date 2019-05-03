@@ -31,7 +31,7 @@ public class pickups_expanded extends AppCompatActivity {
         rescheduleText = findViewById(R.id.rescheduleText);
 
         orgNameP.setText(infoSplit[1]);
-        pickupTimeP.setText(infoSplit[2]);
+        pickupTimeP.setText("Current "+infoSplit[2]);
 
         reschedule.setOnClickListener(new View.OnClickListener() {
             @Override
