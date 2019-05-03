@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light">
+    android:background="@drawable/foodbackground2">
 
     <ImageButton
         android:id="@+id/addDonationButton"
@@ -61,13 +61,13 @@
     <TextView
         android:id="@+id/viewNotificationsText"
         android:layout_width="200dp"
-        android:editable="false"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/viewNotificationsButton"
         android:layout_below="@id/viewAllDonationsText"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@id/viewNotificationsButton"
+        android:editable="false"
         android:text="View Notifications"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -79,13 +79,13 @@
 
     <TextView
         android:id="@+id/addDonationsText"
-        android:editable="false"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
         android:layout_toRightOf="@id/addDonationButton"
+        android:editable="false"
         android:text="Add Donation"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -97,13 +97,13 @@
     <TextView
         android:id="@+id/viewAllDonationsText"
         android:layout_width="200dp"
-        android:editable="false"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="95dp"
         android:layout_below="@id/addDonationsText"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="8dp"
         android:layout_toRightOf="@id/viewAllDonationsButton"
+        android:editable="false"
         android:text="View All Donations"
         android:textSize="30sp"
         android:textStyle="bold"

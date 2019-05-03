@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/cratepage"
+    android:background="@drawable/cratepage2"
     android:alpha="0.9"
     >
     <ImageView
@@ -20,19 +20,22 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         />
+
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="35dp"
+        android:layout_below="@+id/logoimage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/roundshape"
         android:ems="10"
         android:hint="enter email"
-        android:background="@drawable/roundshape"
-        android:paddingLeft="10dp"
         android:inputType="textEmailAddress"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/logoimage"
-        android:layout_marginBottom="15dp"
-        />
+        android:paddingLeft="10dp"
+        android:shadowColor="@color/common_google_signin_btn_text_dark_focused"
+        android:shadowDx="20"
+        android:shadowDy="20" />
 
     <EditText
         android:id="@+id/password"
