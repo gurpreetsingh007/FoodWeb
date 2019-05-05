@@ -78,6 +78,8 @@ public class DonateLogin extends AppCompatActivity {
                                 if((""+username.hashCode()).equals(data.getKey())){
                                     emailverification = true;
                                 }
+//                                Log.d("0", "user password:" + info.get("user_password").toString());
+//                                Log.d("0", "password" + password);
                                 if(info.get("user_password").equals(password)){
                                     passwordverification= true;
                                 }
@@ -90,7 +92,7 @@ public class DonateLogin extends AppCompatActivity {
                             }
                             if(emailverification && passwordverification){
                                 Intent intent = new Intent(DonateLogin.this, DonatorInfo.class);
-                                intent.putExtra("login","passing");
+                                intent.putExtra("login",username);
                                 startActivity(intent);
                             }
                         }

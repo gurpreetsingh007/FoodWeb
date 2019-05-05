@@ -4,12 +4,21 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Iterator;
 
 public class addItem extends AppCompatActivity {
     static final int REQUEST_TAKE_PHOTO = 1;
@@ -18,6 +27,9 @@ public class addItem extends AppCompatActivity {
     private Bitmap imageBitmap;
     private Button addItem;
     private EditText foodName, foodAmount;
+    FirebaseDatabase database;
+    DatabaseReference databaseReference,account;
+    private String username;
 
     /** ------------------------ ALL PICTURE STUFF ------------------------------- **/
 
@@ -41,6 +53,8 @@ public class addItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_donation);
+        Intent intent = getIntent();
+        username = intent.getStringExtra("addItem");
 
         foodPic = (ImageView) findViewById(R.id.foodPic);
         addItem = (Button) findViewById(R.id.addButton);
@@ -61,10 +75,22 @@ public class addItem extends AppCompatActivity {
                 if (foodName.getText().toString().isEmpty() || foodAmount.getText().toString().isEmpty()) {
                     Toast.makeText(addItem.this, "Fill in all information.", Toast.LENGTH_SHORT).show();
                 } else{
+                    database = FirebaseDatabase.getInstance();
+                    databaseReference = database.getReference("Donators");
+//                    DatabaseReference restaurant = databaseReference.getKey();
+//
+//                    account = restaurant.child(""+foodName.getText().toString().hashCode());
+//                    DatabaseReference foodname = account.child("food_name");
+//                    DatabaseReference foodquantity = account.child("food_quantity");
+//                    foodname.setValue(foodName.getText().toString());
+//                    foodquantity.setValue(foodAmount.getText().toString());
+
                     Intent intent = new Intent(addItem.this, DonatorInfo.class);
                     intent.putExtra("AddItemDone","finished");
                     startActivity(intent);
                     Toast.makeText(addItem.this, "Item Added", Toast.LENGTH_SHORT).show();
+
+
                 }
 
             }

@@ -35,18 +35,20 @@ public class viewPickups extends AppCompatActivity {
 
         final ArrayList<String> notificationsArray = new ArrayList<>();
 
-        String temp = "\n"+"Tandoori Nite"+"\n"+"Pickup Time: 1 PM"+"\n";
-        String[] tempsplit = temp.split("\n");
+//        String temp = "\n"+"Tandoori Nite"+"\n"+"Pickup Time: 1 PM"+"\n";
+//        String[] tempsplit = temp.split("\n");
+//
+//        if (orgName != null && orgName.equals(tempsplit[1])) {
+//            temp = "\n"+orgName+"\n"+"Pickup Time: "+newTime+"\n";
+//        }
+//
+//        notificationsArray.add(temp);
+//
+//        notificationsArray.add("\n"+"Restaurant 2"+"\n"+"Pickup Time: 2 PM"+"\n");
+//        notificationsArray.add("\n"+"Cheeseboard"+"\n"+"Pickup Time: 3 PM"+"\n");
+//        notificationsArray.add("\n"+"Cheese Louise"+"\n"+"Pickup Time: 4 PM"+"\n");
 
-        if (orgName != null && orgName.equals(tempsplit[1])) {
-            temp = "\n"+orgName+"\n"+"Pickup Time: "+newTime+"\n";
-        }
-
-        notificationsArray.add(temp);
-
-        notificationsArray.add("\n"+"Restaurant 2"+"\n"+"Pickup Time: 2 PM"+"\n");
-        notificationsArray.add("\n"+"Cheeseboard"+"\n"+"Pickup Time: 3 PM"+"\n");
-        notificationsArray.add("\n"+"Cheese Louise"+"\n"+"Pickup Time: 4 PM"+"\n");
+        //connect and pull from DB
 
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,notificationsArray);

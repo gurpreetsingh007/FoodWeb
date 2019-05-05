@@ -28,29 +28,31 @@ public class OrganizationPickups extends AppCompatActivity {
     }
 
     private void initImageBitmaps(){
-        mImageUrls.add("https://i.redd.it/mgbymkbaleu21.jpg");
-        mNames.add("Tandori night");
-        mtime.add(2.3);
+//        mImageUrls.add("https://i.redd.it/mgbymkbaleu21.jpg");
+//        mNames.add("Tandori night");
+//        mtime.add(2.3);
+//
+//        mImageUrls.add("https://i.redd.it/4qy2aygceau21.jpg");
+//        mNames.add("Taco bell");
+//        mtime.add(3.1);
+//
+//        mImageUrls.add("https://i.redd.it/nu6sdx4ydiu21.jpg");
+//        mNames.add("Chaat cafe");
+//        mtime.add(1.5);
+//
+//        mImageUrls.add("https://i.redd.it/zmio0th7eeu21.jpg");
+//        mNames.add("Thai Noodles");
+//        mtime.add(2.1);
+//
+//        mImageUrls.add("https://i.redd.it/c0xkavo6egu21.jpg");
+//        mNames.add("Viks");
+//        mtime.add(4.1);
+//
+//        mImageUrls.add("https://i.redd.it/6g0wx2otugu21.jpg");
+//        mNames.add("Mehak chaat");
+//        mtime.add(0.5);
 
-        mImageUrls.add("https://i.redd.it/4qy2aygceau21.jpg");
-        mNames.add("Taco bell");
-        mtime.add(3.1);
-
-        mImageUrls.add("https://i.redd.it/nu6sdx4ydiu21.jpg");
-        mNames.add("Chaat cafe");
-        mtime.add(1.5);
-
-        mImageUrls.add("https://i.redd.it/zmio0th7eeu21.jpg");
-        mNames.add("Thai Noodles");
-        mtime.add(2.1);
-
-        mImageUrls.add("https://i.redd.it/c0xkavo6egu21.jpg");
-        mNames.add("Viks");
-        mtime.add(4.1);
-
-        mImageUrls.add("https://i.redd.it/6g0wx2otugu21.jpg");
-        mNames.add("Mehak chaat");
-        mtime.add(0.5);
+        //Pull from DB
         initRecyclerView();
 
     }

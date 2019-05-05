@@ -16,6 +16,8 @@ public class notifications_expanded extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Could be depricated, will use pickups expanded instead
+
         Bundle extras = getIntent().getExtras();
         final String info = extras.getString("itemClicked");
         String[] infoSplit = info.split("\n");

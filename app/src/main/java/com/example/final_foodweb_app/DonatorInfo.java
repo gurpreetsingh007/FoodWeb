@@ -13,11 +13,15 @@ public class DonatorInfo extends AppCompatActivity {
     private ImageView addDonationButton, viewNotificationsButton, viewAllDonationsButton;
     private TextView addDonationText, viewNotificationsText, viewAllDonationsText;
     private Button logout;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donator_info);
+        Intent intent = getIntent();
+        username = intent.getStringExtra("login");
+
 
         //get all vars
         addDonationButton = findViewById(R.id.addDonationButton);
@@ -34,7 +38,7 @@ public class DonatorInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DonatorInfo.this, addItem.class);
-                intent.putExtra("addItem","donation button clicked");
+                intent.putExtra("addItem",username);
                 startActivity(intent);
             }
         });

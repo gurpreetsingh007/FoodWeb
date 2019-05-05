@@ -16,6 +16,8 @@ public class donations_expanded extends AppCompatActivity {
     private ImageView foodPic;
     private TextView foodName, foodAmount;
 
+    //Plan is to make this the same as pickups expanded
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

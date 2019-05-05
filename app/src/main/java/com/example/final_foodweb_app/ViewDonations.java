@@ -22,13 +22,16 @@ public class ViewDonations extends AppCompatActivity {
 
         final ArrayList<String> donationsArray = new ArrayList<>();
 
-        donationsArray.add("\n"+"Student Org 1"+"\n"+"Date: April 25, 2019"+"\n");
-        donationsArray.add("\n"+"Food Collective"+"\n"+"Date: April 16, 2019"+"\n");
-        donationsArray.add("\n"+"Student Org 2"+"\n"+"Date: April 10, 2019"+"\n");
-        donationsArray.add("\n"+"Cheese Louise"+"\n"+"Date: March 24, 2019"+"\n");
-        donationsArray.add("\n"+"Take a Pizza Me"+"\n"+"Date: March 2, 2019"+"\n");
-        donationsArray.add("\n"+"Let That Man-go"+"\n"+"Date: January 7, 2019"+"\n");
-        donationsArray.add("\n"+"Nacho Problem"+"\n"+"Date: November 19, 2018"+"\n");
+        //connect DB
+        //pull from DB here
+
+//        donationsArray.add("\n"+"Student Org 1"+"\n"+"Date: April 25, 2019"+"\n");
+//        donationsArray.add("\n"+"Food Collective"+"\n"+"Date: April 16, 2019"+"\n");
+//        donationsArray.add("\n"+"Student Org 2"+"\n"+"Date: April 10, 2019"+"\n");
+//        donationsArray.add("\n"+"Cheese Louise"+"\n"+"Date: March 24, 2019"+"\n");
+//        donationsArray.add("\n"+"Take a Pizza Me"+"\n"+"Date: March 2, 2019"+"\n");
+//        donationsArray.add("\n"+"Let That Man-go"+"\n"+"Date: January 7, 2019"+"\n");
+//        donationsArray.add("\n"+"Nacho Problem"+"\n"+"Date: November 19, 2018"+"\n");
 
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,donationsArray);

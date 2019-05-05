@@ -17,6 +17,7 @@ public class pickups_expanded extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //need to update to have format (top-down): logo, restaurant/pantry name, address, contact info, selected food, time, cancel
         Bundle extras = getIntent().getExtras();
         final String info = extras.getString("itemClicked");
         String[] infoSplit = info.split("\n");
