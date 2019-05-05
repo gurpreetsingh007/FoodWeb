@@ -74,15 +74,28 @@
         android:paddingLeft="10dp"
         android:inputType="text"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:layout_below="@+id/organizationname"
+        />
+    <EditText
+        android:id="@+id/phonenumber"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:hint="phone number (optional)"
+        android:background="@drawable/roundshape"
+        android:paddingLeft="10dp"
+        android:inputType="text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@+id/address"
         />
 
     <Button
         android:id="@+id/createaccount"
         android:layout_width="239dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/address"
+        android:layout_below="@+id/phonenumber"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:background="@drawable/roundshape_button"

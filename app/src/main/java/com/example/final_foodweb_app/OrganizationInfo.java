@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class OrganizationInfo extends AppCompatActivity {
-    private Button available_items, view_pickups;
+    private Button available_items, view_pickups, logout;
 
 
     @Override
@@ -18,6 +18,7 @@ public class OrganizationInfo extends AppCompatActivity {
         String passing = intent.getStringExtra("login");
         available_items = findViewById(R.id.available_button);
         view_pickups = findViewById(R.id.view_pickups);
+        logout = findViewById(R.id.logout);
         available_items.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,6 +33,14 @@ public class OrganizationInfo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(OrganizationInfo.this, viewPickups.class);
                 intent.putExtra("viewPickups","passing");
+                startActivity(intent);
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrganizationInfo.this, MainActivity.class);
+                intent.putExtra("logout","passing");
                 startActivity(intent);
             }
         });

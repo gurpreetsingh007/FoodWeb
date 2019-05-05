@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class DonatorInfo extends AppCompatActivity {
     private ImageView addDonationButton, viewNotificationsButton, viewAllDonationsButton;
     private TextView addDonationText, viewNotificationsText, viewAllDonationsText;
+    private Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class DonatorInfo extends AppCompatActivity {
         addDonationText = findViewById(R.id.addDonationsText);
         viewNotificationsText = findViewById(R.id.viewNotificationsText);
         viewAllDonationsText = findViewById(R.id.viewAllDonationsText);
-
+        logout = findViewById(R.id.logout);
 
 
         addDonationButton.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +79,14 @@ public class DonatorInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DonatorInfo.this, ViewDonations.class);
+                intent.putExtra("donations","viewing donations");
+                startActivity(intent);
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DonatorInfo.this, MainActivity.class);
                 intent.putExtra("donations","viewing donations");
                 startActivity(intent);
             }

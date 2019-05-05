@@ -42,5 +42,19 @@
         android:text="View pickups"
         android:textAlignment="center"
         android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"/>
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_pickups"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/logout_shape"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Logout"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="18sp" />
 </RelativeLayout>
