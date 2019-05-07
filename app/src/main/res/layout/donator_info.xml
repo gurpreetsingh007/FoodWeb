@@ -82,6 +82,7 @@
         android:background="@drawable/logout_shape"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
+        android:layout_marginTop="30dp"
         android:text="Logout"
         android:textAlignment="center"
         android:textColor="@android:color/white"
