@@ -39,11 +39,11 @@
 
     <EditText
         android:id="@+id/password"
+        android:inputType="textPassword"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:ems="10"
         android:hint="create password"
-        android:inputType="text"
         android:background="@drawable/roundshape"
         android:paddingLeft="10dp"
         android:layout_centerHorizontal="true"
