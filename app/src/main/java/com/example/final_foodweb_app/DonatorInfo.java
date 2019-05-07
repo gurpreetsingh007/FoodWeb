@@ -3,6 +3,7 @@ package com.example.final_foodweb_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,6 +15,7 @@ public class DonatorInfo extends AppCompatActivity {
     private TextView addDonationText, viewNotificationsText, viewAllDonationsText;
     private Button logout;
     private String username;
+    private String foodname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,9 @@ public class DonatorInfo extends AppCompatActivity {
         setContentView(R.layout.donator_info);
         Intent intent = getIntent();
         username = intent.getStringExtra("login");
+        foodname = intent.getStringExtra("foodname");
+        Log.d("0", "USERNAME FROM INFO"+ username);
+
 
 
         //get all vars
@@ -39,6 +44,7 @@ public class DonatorInfo extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(DonatorInfo.this, addItem.class);
                 intent.putExtra("addItem",username);
+                Log.d("0", "USERNAME"+ username);
                 startActivity(intent);
             }
         });
@@ -46,7 +52,9 @@ public class DonatorInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DonatorInfo.this, addItem.class);
-                intent.putExtra("addItem","donation button clicked");
+                intent.putExtra("addItem",username);
+                Log.d("0", "USERNAME"+ username);
+
                 startActivity(intent);
             }
         });
@@ -75,7 +83,9 @@ public class DonatorInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DonatorInfo.this, ViewDonations.class);
-                intent.putExtra("donations","viewing donations");
+                intent.putExtra("donations",username);
+                intent.putExtra("foodname",foodname);
+
                 startActivity(intent);
             }
         });
@@ -83,7 +93,9 @@ public class DonatorInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DonatorInfo.this, ViewDonations.class);
-                intent.putExtra("donations","viewing donations");
+                intent.putExtra("donations",username);
+                intent.putExtra("foodname",foodname);
+
                 startActivity(intent);
             }
         });

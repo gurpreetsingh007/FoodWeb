@@ -93,6 +93,7 @@ public class DonateLogin extends AppCompatActivity {
                             if(emailverification && passwordverification){
                                 Intent intent = new Intent(DonateLogin.this, DonatorInfo.class);
                                 intent.putExtra("login",username);
+                                Log.d("0", "USERNAME\n\n"+ username);
                                 startActivity(intent);
                             }
                         }

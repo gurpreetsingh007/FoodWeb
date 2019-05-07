@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,21 +77,24 @@ public class addItem extends AppCompatActivity {
                     Toast.makeText(addItem.this, "Fill in all information.", Toast.LENGTH_SHORT).show();
                 } else{
                     database = FirebaseDatabase.getInstance();
-                    databaseReference = database.getReference("Donators");
-//                    DatabaseReference restaurant = databaseReference.getKey();
-//
-//                    account = restaurant.child(""+foodName.getText().toString().hashCode());
-//                    DatabaseReference foodname = account.child("food_name");
-//                    DatabaseReference foodquantity = account.child("food_quantity");
-//                    foodname.setValue(foodName.getText().toString());
-//                    foodquantity.setValue(foodAmount.getText().toString());
+                    String s = ""+username.hashCode();
+                    databaseReference = database.getReference("Donators/"+s);
+                    DatabaseReference r_menu = databaseReference.child("Food items");
+                    DatabaseReference hashed = r_menu.child(""+foodName.getText().toString().hashCode());
+                    DatabaseReference name = hashed.child("Food name");
+                    DatabaseReference quantity = hashed.child("Food quantity");
+                    DatabaseReference pic = hashed.child("Food pic");
+                    name.setValue(foodName.getText().toString());
+                    quantity.setValue(foodAmount.getText().toString());
+
+                    // get the picture of food
+                    pic.setValue("N/A");
 
                     Intent intent = new Intent(addItem.this, DonatorInfo.class);
-                    intent.putExtra("AddItemDone","finished");
+                    intent.putExtra("foodname",foodName.getText().toString());
+                    intent.putExtra("username",username);
                     startActivity(intent);
                     Toast.makeText(addItem.this, "Item Added", Toast.LENGTH_SHORT).show();
-
-
                 }
 
             }

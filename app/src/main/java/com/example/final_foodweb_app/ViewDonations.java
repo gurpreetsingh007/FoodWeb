@@ -3,25 +3,45 @@ package com.example.final_foodweb_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class ViewDonations extends AppCompatActivity {
     ListView donationsListView;
+    String username,foodname;
+    ArrayList<String> donationsArray = new ArrayList<>();
+    FirebaseDatabase database;
+    DatabaseReference databaseReference,account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_donations);
-
+        Intent intent = getIntent();
+        username = intent.getStringExtra("donations");
+        foodname = intent.getStringExtra("foodname");
         donationsListView = findViewById(R.id.donationsList);
+        database = FirebaseDatabase.getInstance();
+        String s = ""+username.hashCode();
+        databaseReference = database.getReference("Donators/"+s+"Food items");
+//        Log.d("0","REferenced\n"+ databaseReference);
+        Log.d("0","Foodname\n"+ foodname);
 
-        final ArrayList<String> donationsArray = new ArrayList<>();
-
+//        DatabaseReference r_menu = databaseReference.child("Food items");
+//        DatabaseReference hashed = r_menu.child(""+foodName.getText().toString().hashCode());
+//        DatabaseReference name = hashed.child("Food name");
+//        DatabaseReference quantity = hashed.child("Food quantity");
+//        DatabaseReference pic = hashed.child("Food pic");
+//        name.setValue(foodName.getText().toString());
+//        quantity.setValue(foodAmount.getText().toString());
         //connect DB
         //pull from DB here
 
