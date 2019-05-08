@@ -83,7 +83,7 @@
             android:layout_width="300dp"
             android:layout_height="35dp"
             android:ems="10"
-            android:hint="phone number (optional)"
+            android:hint="phone number"
             android:background="@drawable/roundshape"
             android:paddingLeft="10dp"
             android:inputType="text"
@@ -120,7 +120,5 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-
             />
-
     </RelativeLayout>

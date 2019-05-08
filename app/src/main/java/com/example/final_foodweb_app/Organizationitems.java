@@ -2,12 +2,15 @@ package com.example.final_foodweb_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +34,7 @@ public class Organizationitems extends AppCompatActivity {
 
 
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Bitmap> mImageUrls = new ArrayList<>();
 //    private ArrayList<Double> mdistance = new ArrayList<>();
 
     FirebaseDatabase database;
@@ -63,9 +66,20 @@ public class Organizationitems extends AppCompatActivity {
                     Map info = (HashMap) data.getValue();
                     String org_name = info.get("user_organization").toString();
                     mNames.add(org_name);
-                    mImageUrls.add("https://i.redd.it/mgbymkbaleu21.jpg");
-//                    mdistance.add(10.1);
+                    String foodpic = info.get("Logo").toString();
+
+                    byte[] imagebytes = Base64.decode(foodpic,Base64.DEFAULT);
+                    Bitmap decodeImage = BitmapFactory.decodeByteArray(imagebytes,0,imagebytes.length);
+                    mImageUrls.add(decodeImage);
                     initRecyclerView();
+
+
+
+
+
+//                    mImageUrls.add("https://i.redd.it/mgbymkbaleu21.jpg");
+//                    mdistance.add(10.1);
+//                    initRecyclerView();
 //                    Log.d("0","Hashmap\n"+info);
 
                 }

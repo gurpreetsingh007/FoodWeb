@@ -26,13 +26,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
     private ArrayList<String> names;
-    private ArrayList<String> images;
+    private ArrayList<Bitmap> images;
 //    private ArrayList<Double> distances;
     private Context mContext;
     String clicked_username;
 
 
-    public MyAdapter(Context mContext,ArrayList<String> names, ArrayList<String> images
+    public MyAdapter(Context mContext,ArrayList<String> names, ArrayList<Bitmap> images
                     ,String username) {
         this.names = names;
         this.images = images;
