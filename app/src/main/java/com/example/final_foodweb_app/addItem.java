@@ -2,10 +2,13 @@ package com.example.final_foodweb_app;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Iterator;
 
 public class addItem extends AppCompatActivity {
@@ -49,6 +53,18 @@ public class addItem extends AppCompatActivity {
             foodPic.setImageBitmap(imageBitmap);
         }
     }
+//    public void encodeBitmapAndSaveToFirebase(Bitmap bitmap) {
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+//        String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+//        DatabaseReference ref = FirebaseDatabase.getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_RESTAURANTS)
+//                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                .child(mRestaurant.getPushId())
+//                .child("imageUrl");
+//        ref.setValue(imageEncoded);
+//    }
+
     /** ------------------------------------------------------------------------- **/
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +103,15 @@ public class addItem extends AppCompatActivity {
                     name.setValue(foodName.getText().toString());
                     quantity.setValue(foodAmount.getText().toString());
 
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    Bitmap bitmap = ((BitmapDrawable) foodPic.getDrawable()).getBitmap();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
+                    byte[] imagebytes = baos.toByteArray();
+                    String imageString = Base64.encodeToString(imagebytes,Base64.DEFAULT);
+
                     // get the picture of food
-                    pic.setValue("N/A");
+                    pic.setValue(imageString);
+                    Log.d("0","picture\n\n"+foodPic);
 
                     Intent intent = new Intent(addItem.this, DonatorInfo.class);
                     intent.putExtra("foodname",foodName.getText().toString());
