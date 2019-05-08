@@ -47,7 +47,7 @@ public class ViewDonationsAdapter extends RecyclerView.Adapter<ViewDonationsAdap
                 .load(food_images.get(position))
                 .into(holder.image);
         holder.name.setText("Food name: "+food_names.get(position));
-        holder.quantity.setText(("Quantity: "+food_quantities.get(position).toString()));
+        holder.quantity.setText(("Quantity: "+food_quantities.get(position).toString()) + " lbs");
     }
 
     @Override
