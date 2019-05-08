@@ -2,64 +2,92 @@ package com.example.final_foodweb_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Foodlist extends AppCompatActivity {
 
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
-    private ArrayList<Double> mQuantities = new ArrayList<>();
+    private ArrayList<String> mQuantities = new ArrayList<>();
+    private ArrayList<String> hashingfood = new ArrayList<>();
+
     private String defaultlogo = "https://i.redd.it/mgbymkbaleu21.jpg";
+    private String username;
+    private Button additems;
+
+    FirebaseDatabase database;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_list);
         Intent intent = getIntent();
-        String passing = intent.getStringExtra("items");
-        initImageBitmaps();
+        username = intent.getStringExtra("items");
+        additems = findViewById(R.id.button);
 
 
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Donators");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                Iterator<DataSnapshot> iterchildren = children.iterator();
+                while(iterchildren.hasNext()){
+                    DataSnapshot data = iterchildren.next();
+                    Map info = (HashMap) data.getValue();
+                    String org_name = info.get("user_organization").toString();
+                    if(org_name.equals(username)){
+                        Map food = (HashMap) info.get("Food items");
+                        Set a = food.keySet();
+                        Iterator<String> b = a.iterator();
+                        while(b.hasNext()){
+                            String c = b.next();
+                            hashingfood.add(c);
+                        }
+                        for(int i=0; i < hashingfood.size();i++){
+                            Map fooditems = (HashMap) food.get(hashingfood.get(i));
+                            mNames.add((String) fooditems.get("Food name"));
+                            mQuantities.add((String) fooditems.get("Food quantity"));
+                            mImageUrls.add(defaultlogo);
+                            initRecyclerView();
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
-    }
 
-    private void initImageBitmaps() {
-//        mImageUrls.add("https://i.redd.it/mgbymkbaleu21.jpg");
-//        mNames.add("7-layer Burrito");
-//        mQuantities.add(4.3);
-//
-//        mImageUrls.add("https://i.redd.it/4qy2aygceau21.jpg");
-//        mNames.add("Tacos");
-//        mQuantities.add(3.1);
-//
-//        mImageUrls.add("https://i.redd.it/nu6sdx4ydiu21.jpg");
-//        mNames.add("Nacho Fries");
-//        mQuantities.add(1.5);
-//
-//        mImageUrls.add("https://i.redd.it/zmio0th7eeu21.jpg");
-//        mNames.add("Hash Browns");
-//        mQuantities.add(5.1);
-//
-//        mImageUrls.add("https://i.redd.it/c0xkavo6egu21.jpg");
-//        mNames.add("Cheesy Roll-Up");
-//        mQuantities.add(4.1);
-//
-//        mImageUrls.add("https://i.redd.it/6g0wx2otugu21.jpg");
-//        mNames.add("Bean Burrito");
-//        mQuantities.add(3.5);
-//        initRecyclerView();
+        additems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        //ADD CODE HERE FOR DB FUNCTIONALITY
-
+            }
+        });
     }
 
     private void initRecyclerView() {
@@ -67,8 +95,6 @@ public class Foodlist extends AppCompatActivity {
         FoodlistAdapter adapter = new FoodlistAdapter(this,mNames,mImageUrls,mQuantities);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
     }
-
 
 }

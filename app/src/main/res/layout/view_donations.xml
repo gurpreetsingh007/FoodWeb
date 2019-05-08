@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewDonations">
-
-    <ListView
-        android:id="@+id/donationsList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/donations_my_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="498dp"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
+</LinearLayout>

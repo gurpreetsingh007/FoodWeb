@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,44 +26,47 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private ArrayList<String> names;
     private ArrayList<String> images;
-    private ArrayList<Double> distances;
+//    private ArrayList<Double> distances;
     private Context mContext;
+    String clicked_username;
 
 
-    public MyAdapter(Context mContext,ArrayList<String> names, ArrayList<String> images,
-                     ArrayList<Double> distances) {
+    public MyAdapter(Context mContext,ArrayList<String> names, ArrayList<String> images
+                    ,String username) {
         this.names = names;
         this.images = images;
         this.mContext = mContext;
-        this.distances = distances;
+        this.clicked_username = username;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerview,viewGroup,false);
-        MyViewHolder myViewHolder = new MyViewHolder(view);
+        MyViewHolder myViewHolder = new MyViewHolder(view,names);
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
         Glide.with(mContext)
                 .asBitmap()
                 .load(images.get(position))
                 .into(holder.image);
         holder.name.setText(names.get(position));
-        holder.distance.setText((distances.get(position).toString())+" miles away");
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Foodlist.class);
-                intent.putExtra("items","passing");
-                v.getContext().startActivity(intent);
-                Toast.makeText(mContext,names.get(position),Toast.LENGTH_SHORT).show();
-            }
-        });
+
+//        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(v.getContext(), Foodlist.class);
+//                Log.d("0","VIEW\n\n"+names.get(position));
+//                intent.putExtra("items",names.get(position));
+//                v.getContext().startActivity(intent);
+//                Toast.makeText(mContext,names.get(position),Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
 
@@ -76,16 +80,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView name,distance;
+        public TextView name;
         public CircleImageView image;
         RelativeLayout parentLayout;
 
-        public MyViewHolder(View v) {
-            super(v);
-            name = v.findViewById(R.id.name);
-            distance = v.findViewById(R.id.distance);
-            image = v.findViewById(R.id.image);
-            parentLayout = v.findViewById(R.id.parent_layout);
+        public MyViewHolder(View itemView, final ArrayList<String> names) {
+            super(itemView);
+            name = itemView.findViewById(R.id.name);
+//            distance = v.findViewById(R.id.distance);
+            image = itemView.findViewById(R.id.image);
+            parentLayout = itemView.findViewById(R.id.parent_layout);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    Intent intent = new Intent(v.getContext(), Foodlist.class);
+                    Log.d("0","VIEW\n\n"+names.get(pos));
+                    intent.putExtra("items",names.get(pos));
+                    v.getContext().startActivity(intent);
+                }
+            });
+
         }
     }
 

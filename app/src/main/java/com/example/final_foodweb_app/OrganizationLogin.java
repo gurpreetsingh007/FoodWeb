@@ -91,7 +91,7 @@ public class OrganizationLogin extends AppCompatActivity {
                             }
                             if(emailverification && passwordverification){
                                 Intent intent = new Intent(OrganizationLogin.this, OrganizationInfo.class);
-                                intent.putExtra("login","passing");
+                                intent.putExtra("login",username);
                                 startActivity(intent);
                             }
                         }

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/parent_layout"
+    android:id="@+id/donation_parent_layout"
     android:padding="10dp"
     >
 
@@ -18,23 +18,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:id="@+id/name"
+        android:id="@+id/foodname"
         android:layout_toRightOf="@+id/image"
         android:textColor="#000"
-        android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="50dp"
         android:textSize="20sp"
         />
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Distance"-->
-        <!--android:id="@+id/distance"-->
-        <!--android:layout_toRightOf="@+id/image"-->
-        <!--android:textColor="#000"-->
-        <!--android:layout_marginTop="50dp"-->
-        <!--android:layout_marginLeft="50dp"-->
-        <!--android:textSize="20sp"-->
-        <!--/>-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:id="@+id/foodquantity"
+        android:layout_toRightOf="@+id/image"
+        android:textColor="#000"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:textSize="20sp"
+        />
 </RelativeLayout>

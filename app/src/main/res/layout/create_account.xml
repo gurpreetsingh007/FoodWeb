@@ -1,110 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/cratepage2"
-    android:alpha="0.9"
-    >
-    <ImageView
-        android:id="@+id/logoimage"
-        android:layout_width="240dp"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/food"
-        android:contentDescription="@string/logo"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        />
+    <RelativeLayout
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="300dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/logoimage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/roundshape"
-        android:ems="10"
-        android:hint="enter email"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="10dp"
-        android:shadowColor="@color/common_google_signin_btn_text_dark_focused"
-        android:shadowDx="20"
-        android:shadowDy="20" />
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="@drawable/cratepage2"
+        android:alpha="0.9"
+        >
+        <ImageView
+            android:id="@+id/logoimage"
+            android:layout_width="240dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/food"
+            android:contentDescription="@string/logo"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            />
 
-    <EditText
-        android:id="@+id/password"
-        android:inputType="textPassword"
-        android:layout_width="300dp"
-        android:layout_height="35dp"
-        android:ems="10"
-        android:hint="create password"
-        android:background="@drawable/roundshape"
-        android:paddingLeft="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/email"
-        android:layout_marginBottom="15dp"
-        />
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/logoimage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/roundshape"
+            android:ems="10"
+            android:hint="enter email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="10dp"
+            android:shadowColor="@color/common_google_signin_btn_text_dark_focused"
+            android:shadowDx="20"
+            android:shadowDy="20" />
 
-    <EditText
-        android:id="@+id/organizationname"
-        android:layout_width="300dp"
-        android:layout_height="35dp"
-        android:ems="10"
-        android:hint="enter organization name"
-        android:inputType="text"
-        android:background="@drawable/roundshape"
-        android:paddingLeft="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:layout_below="@+id/password"
-        />
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="300dp"
-        android:layout_height="35dp"
-        android:ems="10"
-        android:hint="enter street address"
-        android:background="@drawable/roundshape"
-        android:paddingLeft="10dp"
-        android:inputType="text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/organizationname"
-        />
-    <EditText
-        android:id="@+id/phonenumber"
-        android:layout_width="300dp"
-        android:layout_height="35dp"
-        android:ems="10"
-        android:hint="phone number (optional)"
-        android:background="@drawable/roundshape"
-        android:paddingLeft="10dp"
-        android:inputType="text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:layout_below="@+id/address"
-        />
+        <EditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="create password"
+            android:background="@drawable/roundshape"
+            android:paddingLeft="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/email"
+            android:layout_marginBottom="10dp"
+            />
 
-    <Button
-        android:id="@+id/createaccount"
-        android:layout_width="239dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/phonenumber"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/roundshape_button"
-        android:fontFamily="sans-serif-medium"
-        android:text="Create Account"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        <EditText
+            android:id="@+id/organizationname"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="enter organization name"
+            android:inputType="text"
+            android:background="@drawable/roundshape"
+            android:paddingLeft="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/password"
+            />
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="enter street address"
+            android:background="@drawable/roundshape"
+            android:paddingLeft="10dp"
+            android:inputType="text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/organizationname"
+            />
+        <EditText
+            android:id="@+id/phonenumber"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="phone number (optional)"
+            android:background="@drawable/roundshape"
+            android:paddingLeft="10dp"
+            android:inputType="text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/address"
+            />
 
-        />
+        <Button
+            android:id="@+id/createaccount"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/phonenumber"
+            android:background="@drawable/roundshape_button"
+            android:fontFamily="sans-serif-medium"
+            android:text="Create"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_toRightOf="@+id/chooselogo"
 
-</RelativeLayout>
+            />
+        <Button
+            android:id="@+id/chooselogo"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_below="@+id/phonenumber"
+            android:background="@drawable/logout_shape"
+            android:fontFamily="sans-serif-medium"
+            android:text="logo"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+
+            />
+
+    </RelativeLayout>

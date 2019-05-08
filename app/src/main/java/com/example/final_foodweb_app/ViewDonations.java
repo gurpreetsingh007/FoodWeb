@@ -2,24 +2,37 @@ package com.example.final_foodweb_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ViewDonations extends AppCompatActivity {
     ListView donationsListView;
-    String username,foodname;
+    String username;
     ArrayList<String> donationsArray = new ArrayList<>();
     FirebaseDatabase database;
     DatabaseReference databaseReference,account;
+
+    private ArrayList<String> foodnames = new ArrayList<>();
+    private ArrayList<String> foodquantities = new ArrayList<>();
+    private ArrayList<String> foodimages = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,21 +40,36 @@ public class ViewDonations extends AppCompatActivity {
         setContentView(R.layout.view_donations);
         Intent intent = getIntent();
         username = intent.getStringExtra("donations");
-        foodname = intent.getStringExtra("foodname");
-        donationsListView = findViewById(R.id.donationsList);
         database = FirebaseDatabase.getInstance();
         String s = ""+username.hashCode();
-        databaseReference = database.getReference("Donators/"+s+"Food items");
-//        Log.d("0","REferenced\n"+ databaseReference);
-        Log.d("0","Foodname\n"+ foodname);
+        databaseReference = database.getReference("Donators/"+s+"/Food items");
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                Iterator<DataSnapshot> iterchildren = children.iterator();
+                while(iterchildren.hasNext()){
+                    DataSnapshot data = iterchildren.next();
+                    Map info = (HashMap) data.getValue();
+                    Log.d("0","hashmap"+ info);
+                    String foodname = info.get("Food name").toString();
+                    String foodquantity = (String)info.get("Food quantity");
+//                    String foodpic = info.get("Food pic").toString();
+                    foodnames.add(foodname);
+                    foodquantities.add(foodquantity);
+                    foodimages.add("https://i.redd.it/mgbymkbaleu21.jpg");
+                    initRecyclerView();
+                }
+            }
 
-//        DatabaseReference r_menu = databaseReference.child("Food items");
-//        DatabaseReference hashed = r_menu.child(""+foodName.getText().toString().hashCode());
-//        DatabaseReference name = hashed.child("Food name");
-//        DatabaseReference quantity = hashed.child("Food quantity");
-//        DatabaseReference pic = hashed.child("Food pic");
-//        name.setValue(foodName.getText().toString());
-//        quantity.setValue(foodAmount.getText().toString());
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        databaseReference.addValueEventListener(valueEventListener);
+
+
         //connect DB
         //pull from DB here
 
@@ -54,16 +82,25 @@ public class ViewDonations extends AppCompatActivity {
 //        donationsArray.add("\n"+"Nacho Problem"+"\n"+"Date: November 19, 2018"+"\n");
 
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,donationsArray);
-        donationsListView.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,donationsArray);
+//        donationsListView.setAdapter(arrayAdapter);
+//
+//        donationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent = new Intent(ViewDonations.this, donations_expanded.class);
+//                intent.putExtra("donation", donationsArray.get(i).toString());
+//                startActivity(intent);
+//            }
+//        });
+    }
 
-        donationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(ViewDonations.this, donations_expanded.class);
-                intent.putExtra("donation", donationsArray.get(i).toString());
-                startActivity(intent);
-            }
-        });
+
+    private void initRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.donations_my_recycler_view);
+        ViewDonationsAdapter adapter = new ViewDonationsAdapter(this,foodnames,foodimages,foodquantities);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 }
