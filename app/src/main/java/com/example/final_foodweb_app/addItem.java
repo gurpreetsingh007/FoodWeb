@@ -29,6 +29,7 @@ public class addItem extends AppCompatActivity {
     static final int REQUEST_TAKE_PHOTO = 1;
 
     private ImageView foodPic;
+    private Integer foodPicClicked = 0;
     private Bitmap imageBitmap;
     private Button addItem;
     private EditText foodName, foodAmount;
@@ -51,6 +52,7 @@ public class addItem extends AppCompatActivity {
             Bundle extras = data.getExtras();
             imageBitmap = (Bitmap) extras.get("data");
             foodPic.setImageBitmap(imageBitmap);
+            foodPicClicked = 1;
         }
     }
 //    public void encodeBitmapAndSaveToFirebase(Bitmap bitmap) {
@@ -89,7 +91,7 @@ public class addItem extends AppCompatActivity {
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (foodName.getText().toString().isEmpty() || foodAmount.getText().toString().isEmpty()) {
+                if (foodName.getText().toString().isEmpty() || foodAmount.getText().toString().isEmpty() || foodPicClicked == 0) {
                     Toast.makeText(addItem.this, "Fill in all information.", Toast.LENGTH_SHORT).show();
                 } else{
                     database = FirebaseDatabase.getInstance();
