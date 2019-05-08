@@ -60,6 +60,7 @@ public class ViewDonations extends AppCompatActivity {
                     String foodname = info.get("Food name").toString();
                     String foodquantity = (String)info.get("Food quantity");
                     String foodpic = (String) info.get("Food pic");
+
                     byte[] imagebytes = Base64.decode(foodpic,Base64.DEFAULT);
                     Bitmap decodeImage = BitmapFactory.decodeByteArray(imagebytes,0,imagebytes.length);
 //                    imageView.setImageResource(decodeImage);

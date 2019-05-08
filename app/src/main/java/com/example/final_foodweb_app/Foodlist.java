@@ -1,12 +1,15 @@
 package com.example.final_foodweb_app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +30,7 @@ public class Foodlist extends AppCompatActivity {
 
 
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Bitmap> mImageUrls = new ArrayList<>();
     private ArrayList<String> mQuantities = new ArrayList<>();
     private ArrayList<String> hashingfood = new ArrayList<>();
 
@@ -70,7 +73,11 @@ public class Foodlist extends AppCompatActivity {
                             Map fooditems = (HashMap) food.get(hashingfood.get(i));
                             mNames.add((String) fooditems.get("Food name"));
                             mQuantities.add((String) fooditems.get("Food quantity"));
-                            mImageUrls.add(defaultlogo);
+
+                            String foodpic = (String) fooditems.get("Food pic");
+                            byte[] imagebytes = Base64.decode(foodpic,Base64.DEFAULT);
+                            Bitmap decodeImage = BitmapFactory.decodeByteArray(imagebytes,0,imagebytes.length);
+                            mImageUrls.add(decodeImage);
                             initRecyclerView();
                         }
                     }

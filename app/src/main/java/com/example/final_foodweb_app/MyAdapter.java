@@ -2,6 +2,7 @@ package com.example.final_foodweb_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -56,17 +57,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 .into(holder.image);
         holder.name.setText(names.get(position));
 
-//        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(v.getContext(), Foodlist.class);
-//                Log.d("0","VIEW\n\n"+names.get(position));
-//                intent.putExtra("items",names.get(position));
-//                v.getContext().startActivity(intent);
-//                Toast.makeText(mContext,names.get(position),Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
 

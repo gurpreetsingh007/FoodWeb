@@ -2,6 +2,7 @@ package com.example.final_foodweb_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,11 +22,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyViewHolder> {
 
     private ArrayList<String> food_names;
-    private ArrayList<String> food_images;
+    private ArrayList<Bitmap> food_images;
     private ArrayList<String> food_quantities;
     private Context mContext;
 
-    public FoodlistAdapter(Context mContext,ArrayList<String> names, ArrayList<String> images,
+    public FoodlistAdapter(Context mContext,ArrayList<String> names, ArrayList<Bitmap> images,
                      ArrayList<String> quantities) {
         this.food_names = names;
         this.food_images = images;
