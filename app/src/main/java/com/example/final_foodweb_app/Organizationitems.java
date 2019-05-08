@@ -93,8 +93,6 @@ public class Organizationitems extends AppCompatActivity {
 
 
 
-
-
 //                    mImageUrls.add("https://i.redd.it/mgbymkbaleu21.jpg");
 //                    mdistance.add(10.1);
 //                    initRecyclerView();
