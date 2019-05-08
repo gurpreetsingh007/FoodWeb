@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -66,9 +69,24 @@ public class Organizationitems extends AppCompatActivity {
                     Map info = (HashMap) data.getValue();
                     String org_name = info.get("user_organization").toString();
                     mNames.add(org_name);
-                    String foodpic = info.get("Logo").toString();
 
-                    byte[] imagebytes = Base64.decode(foodpic,Base64.DEFAULT);
+                    Object foodpic = info.get("Logo");
+                    String sFoodPic;
+
+                    if (foodpic == null) {
+                        //Encode
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        ImageView imageView = new ImageView(Organizationitems.this);
+                        imageView.setImageResource(R.drawable.defaultlogo);
+                        Bitmap defaultBitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                        defaultBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                        byte[] imagebytes = baos.toByteArray();
+                        sFoodPic = Base64.encodeToString(imagebytes, Base64.DEFAULT);
+                    } else {
+                        sFoodPic = foodpic.toString();
+                    }
+
+                    byte[] imagebytes = Base64.decode(sFoodPic,Base64.DEFAULT);
                     Bitmap decodeImage = BitmapFactory.decodeByteArray(imagebytes,0,imagebytes.length);
                     mImageUrls.add(decodeImage);
                     initRecyclerView();

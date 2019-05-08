@@ -114,6 +114,7 @@ public class OrganizationCreate extends AppCompatActivity {
                     defaultBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 } else{
                     imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    uploadedLogo = 0;
                 }
 
                 byte[] imagebytes = baos.toByteArray();

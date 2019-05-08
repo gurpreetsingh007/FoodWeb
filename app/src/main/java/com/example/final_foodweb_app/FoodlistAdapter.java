@@ -77,6 +77,8 @@ public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyView
                 @Override
                 public void onClick(View v) {
                     int pos = getAdapterPosition();
+                    System.out.println("pos is:"+pos);
+                    System.out.println("names is:"+names.get(pos));
 //                    Intent intent = new Intent(v.getContext(), Foodlist.class);
 ////                    Log.d("0","VIEW\n\n"+names.get(pos));
 //                    String name = names.get(pos);

@@ -32,7 +32,7 @@ public class addItem extends AppCompatActivity {
     private Integer foodPicClicked = 0;
     private Bitmap imageBitmap;
     private Button addItem;
-    private EditText foodName, foodAmount;
+    private EditText foodName, foodAmount, timeRange;
     FirebaseDatabase database;
     DatabaseReference databaseReference,account;
     private String username;
@@ -79,6 +79,7 @@ public class addItem extends AppCompatActivity {
         addItem = (Button) findViewById(R.id.addButton);
         foodAmount = findViewById(R.id.foodAmount);
         foodName = findViewById(R.id.foodName);
+        timeRange = findViewById(R.id.timeRange);
 
         /** When you click the photoButton, it should take a photo. **/
         foodPic.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +103,12 @@ public class addItem extends AppCompatActivity {
                     DatabaseReference name = hashed.child("Food name");
                     DatabaseReference quantity = hashed.child("Food quantity");
                     DatabaseReference pic = hashed.child("Food pic");
+                    DatabaseReference time = hashed.child("Pickup Time");
+
+
                     name.setValue(foodName.getText().toString());
                     quantity.setValue(foodAmount.getText().toString());
+                    time.setValue(timeRange.getText().toString());
 
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     Bitmap bitmap = ((BitmapDrawable) foodPic.getDrawable()).getBitmap();
