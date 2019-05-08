@@ -1,6 +1,7 @@
 package com.example.final_foodweb_app;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,11 +20,11 @@ public class ViewDonationsAdapter extends RecyclerView.Adapter<ViewDonationsAdap
 
 
     private ArrayList<String> food_names;
-    private ArrayList<String> food_images;
+    private ArrayList<Bitmap> food_images;
     private ArrayList<String> food_quantities;
     private Context mContext;
 
-    public ViewDonationsAdapter(Context mContext,ArrayList<String> names, ArrayList<String> images,
+    public ViewDonationsAdapter(Context mContext,ArrayList<String> names, ArrayList<Bitmap> images,
                            ArrayList<String> quantities) {
         this.food_names = names;
         this.food_images = images;

@@ -1,15 +1,19 @@
 package com.example.final_foodweb_app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,10 +33,11 @@ public class ViewDonations extends AppCompatActivity {
     ArrayList<String> donationsArray = new ArrayList<>();
     FirebaseDatabase database;
     DatabaseReference databaseReference,account;
+    ImageView imageView;
 
     private ArrayList<String> foodnames = new ArrayList<>();
     private ArrayList<String> foodquantities = new ArrayList<>();
-    private ArrayList<String> foodimages = new ArrayList<>();
+    private ArrayList<Bitmap> foodimages = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +59,15 @@ public class ViewDonations extends AppCompatActivity {
                     Log.d("0","hashmap"+ info);
                     String foodname = info.get("Food name").toString();
                     String foodquantity = (String)info.get("Food quantity");
-//                    String foodpic = info.get("Food pic").toString();
+                    String foodpic = (String) info.get("Food pic");
+                    byte[] imagebytes = Base64.decode(foodpic,Base64.DEFAULT);
+                    Bitmap decodeImage = BitmapFactory.decodeByteArray(imagebytes,0,imagebytes.length);
+//                    imageView.setImageResource(decodeImage);
+
+                    Log.d("0","Decode\n\n"+decodeImage);
                     foodnames.add(foodname);
                     foodquantities.add(foodquantity);
-                    foodimages.add("https://i.redd.it/mgbymkbaleu21.jpg");
+                    foodimages.add(decodeImage);
                     initRecyclerView();
                 }
             }
