@@ -84,10 +84,10 @@ public class OrganizationLogin extends AppCompatActivity {
                                 }
                             }
                             if(!emailverification){
-                                Toast.makeText(OrganizationLogin.this, "Invalid email", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(OrganizationLogin.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                             }
                             if(!passwordverification){
-                                Toast.makeText(OrganizationLogin.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(OrganizationLogin.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                             }
                             if(emailverification && passwordverification){
                                 Intent intent = new Intent(OrganizationLogin.this, OrganizationInfo.class);

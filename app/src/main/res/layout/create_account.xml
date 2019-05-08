@@ -83,6 +83,7 @@
             android:layout_width="300dp"
             android:layout_height="35dp"
             android:ems="10"
+            android:imeOptions="actionDone"
             android:hint="phone number"
             android:background="@drawable/roundshape"
             android:paddingLeft="10dp"

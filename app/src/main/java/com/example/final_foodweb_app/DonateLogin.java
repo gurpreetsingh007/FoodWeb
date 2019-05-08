@@ -85,10 +85,10 @@ public class DonateLogin extends AppCompatActivity {
                                 }
                             }
                             if(!emailverification){
-                                Toast.makeText(DonateLogin.this, "Invalid email", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DonateLogin.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                             }
                             if(!passwordverification){
-                                Toast.makeText(DonateLogin.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DonateLogin.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                             }
                             if(emailverification && passwordverification){
                                 Intent intent = new Intent(DonateLogin.this, DonatorInfo.class);
