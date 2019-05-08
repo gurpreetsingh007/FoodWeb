@@ -1,28 +1,55 @@
 package com.example.final_foodweb_app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.ByteArrayOutputStream;
 import java.util.UUID;
 
 public class DonatorCreate extends AppCompatActivity {
 
-    private Button create_account,logo;
+    private Button create_account;
     private EditText email,password,organizationname,address,phonenumber;
     FirebaseDatabase database;
     DatabaseReference account;
+    public static final int REQUEST_TAKE_PHOTO = 1;
+    private int uploadedLogo = 0;
+    private Bitmap imageBitmap;
+    private Button chooselogo;
 
     FirebaseDatabase t_database;
     DatabaseReference organization_ref,donator_ref;
 
+    /** TAKES THE PICTURE **/
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            imageBitmap = (Bitmap) extras.get("data");
+            uploadedLogo = 1;
+            Toast.makeText(DonatorCreate.this, "Logo Uploaded!.", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,14 +58,23 @@ public class DonatorCreate extends AppCompatActivity {
         Intent intent = getIntent();
         String passing = intent.getStringExtra("donation");
         create_account  = findViewById(R.id.createaccount);
-        logo = findViewById(R.id.chooselogo);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         organizationname = findViewById(R.id.organizationname);
         address = findViewById(R.id.address);
+        chooselogo = findViewById(R.id.chooselogo);
+        phonenumber = findViewById(R.id.phonenumber);
 
         database = FirebaseDatabase.getInstance();
         organization_ref = database.getReference("Donators");
+
+        chooselogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dispatchTakePictureIntent();
+            }
+        });
+
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +88,7 @@ public class DonatorCreate extends AppCompatActivity {
                 DatabaseReference a_org_name = account.child("user_organization");
                 DatabaseReference a_address = account.child("user_address");
                 DatabaseReference a_phonenumber = account.child("user_phonenumber");
+                DatabaseReference pic = account.child("Logo");
 
 
 
@@ -59,27 +96,29 @@ public class DonatorCreate extends AppCompatActivity {
                 a_password.setValue(password.getText().toString());
                 a_org_name.setValue(organizationname.getText().toString());
                 a_address.setValue(address.getText().toString());
-                if(phonenumber.getText().toString().length() == 10 ){
-                    a_phonenumber.setValue(phonenumber.getText().toString());
+                a_phonenumber.setValue(phonenumber.getText().toString());
+
+                /** Starting image saving **/
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+
+                if (uploadedLogo == 0) {
+                    ImageView imageView = new ImageView(DonatorCreate.this);
+                    imageView.setImageResource(R.drawable.defaultlogo);
+                    Bitmap defaultBitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                    defaultBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                } else{
+                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 }
-                else if (phonenumber.getText().toString().length() > 10 || phonenumber.getText().toString().length()<10 ){
-                    Toast.makeText(DonatorCreate.this, "Invalid phone, skip it?", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    a_phonenumber.setValue("N/A");
-                }
+
+                byte[] imagebytes = baos.toByteArray();
+                String imageString = Base64.encodeToString(imagebytes, Base64.DEFAULT);
+
+                // get the picture of food
+                pic.setValue(imageString);
 
                 startActivity(intent);
             }
         });
-
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // need to do some work here, send to another activity and choose default logo or the
-                // picture taken one
-            }
-        });
-
     }
 }
