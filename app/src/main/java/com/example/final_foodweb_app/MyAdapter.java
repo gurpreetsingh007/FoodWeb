@@ -29,22 +29,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private ArrayList<Bitmap> images;
 //    private ArrayList<Double> distances;
     private Context mContext;
-    String clicked_username;
+    String clicked_username, hashto;
 
 
     public MyAdapter(Context mContext,ArrayList<String> names, ArrayList<Bitmap> images
-                    ,String username) {
+                    ,String username, String hashto) {
         this.names = names;
         this.images = images;
         this.mContext = mContext;
         this.clicked_username = username;
+        this.hashto = hashto;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerview,viewGroup,false);
-        MyViewHolder myViewHolder = new MyViewHolder(view,names);
+        MyViewHolder myViewHolder = new MyViewHolder(view,names, hashto);
         return myViewHolder;
     }
 
@@ -74,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public CircleImageView image;
         RelativeLayout parentLayout;
 
-        public MyViewHolder(View itemView, final ArrayList<String> names) {
+        public MyViewHolder(View itemView, final ArrayList<String> names, final String hashto) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
 //            distance = v.findViewById(R.id.distance);
@@ -87,6 +88,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     Intent intent = new Intent(v.getContext(), Foodlist.class);
                     Log.d("0","VIEW\n\n"+names.get(pos));
                     intent.putExtra("items",names.get(pos));
+                    intent.putExtra("hashto", hashto);
                     v.getContext().startActivity(intent);
                 }
             });

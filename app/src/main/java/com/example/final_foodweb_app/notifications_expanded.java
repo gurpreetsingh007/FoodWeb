@@ -29,9 +29,9 @@ public class notifications_expanded extends AppCompatActivity {
         orgName = findViewById(R.id.orgName);
         pickupTime = findViewById(R.id.pickupTime);
         pickedUpItem = findViewById(R.id.pickedUpItem);
-
-        orgName.setText(infoSplit[1]);
-        pickupTime.setText(infoSplit[2]);
+//
+//        orgName.setText(infoSplit[1]);
+//        pickupTime.setText(infoSplit[2]);
 
         pickedUpItem.setOnClickListener(new View.OnClickListener() {
             @Override

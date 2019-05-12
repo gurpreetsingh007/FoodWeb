@@ -92,6 +92,7 @@ public class OrganizationLogin extends AppCompatActivity {
                             if(emailverification && passwordverification){
                                 Intent intent = new Intent(OrganizationLogin.this, OrganizationInfo.class);
                                 intent.putExtra("login",username);
+                                intent.putExtra("hashto", username);
                                 startActivity(intent);
                             }
                         }

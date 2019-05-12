@@ -14,7 +14,7 @@
         android:id="@+id/pickedUpItem"
         android:layout_width="239dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pickupTime"
+        android:layout_below="@+id/actualTime"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:background="@drawable/roundshape_button"
@@ -31,21 +31,43 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:text="orgName"
+        android:text="Pantry: MLK Pantry"
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/orgName2"
+        android:layout_width="250dp"
+        android:layout_below="@id/orgName"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Restaurant: Taco Bell"
+        android:textAlignment="center"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/pickupTime"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/orgName"
+        android:layout_below="@id/orgName2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="pickupTime"
+        android:layout_marginTop="50dp"
+        android:text="Picking up: 3 lbs tacos, 5 lbs burritos"
         android:textAlignment="center"
-        android:textSize="25sp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/actualTime"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickupTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Picking Time: 9AM - 5PM"
+        android:textAlignment="center"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

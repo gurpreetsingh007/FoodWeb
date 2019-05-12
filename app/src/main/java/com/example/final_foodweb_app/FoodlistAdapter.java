@@ -1,5 +1,6 @@
 package com.example.final_foodweb_app;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -24,14 +27,16 @@ public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyView
     private ArrayList<String> food_names;
     private ArrayList<Bitmap> food_images;
     private ArrayList<String> food_quantities;
+    private String username;
     private Context mContext;
 
     public FoodlistAdapter(Context mContext,ArrayList<String> names, ArrayList<Bitmap> images,
-                     ArrayList<String> quantities) {
+                           ArrayList<String> quantities, String username) {
         this.food_names = names;
         this.food_images = images;
         this.mContext = mContext;
         this.food_quantities = quantities;
+        this.username = username;
     }
 
 
@@ -39,7 +44,7 @@ public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.food_list_recycler,viewGroup,false);
-        MyViewHolder myViewHolder = new MyViewHolder(view,food_names,food_quantities);
+        MyViewHolder myViewHolder = new MyViewHolder(view,food_names,food_quantities, username);
         return myViewHolder;
     }
 
@@ -65,27 +70,43 @@ public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyView
         public TextView name,quantity;
         public CircleImageView image;
         RelativeLayout parentLayout;
+        FirebaseDatabase database;
+        DatabaseReference account;
+        String hashto;
 
-        public MyViewHolder(View v, final ArrayList<String> names, final ArrayList<String> quantities) {
+
+
+        public MyViewHolder(View v, final ArrayList<String> names, final ArrayList<String> quantities, final String username) {
             super(v);
             name = v.findViewById(R.id.food_name);
             quantity = v.findViewById(R.id.food_quantity);
             image = v.findViewById(R.id.food_image);
             parentLayout = v.findViewById(R.id.food_parent_layout);
 
+
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos = getAdapterPosition();
-                    System.out.println("pos is:"+pos);
-                    System.out.println("names is:"+names.get(pos));
-//                    Intent intent = new Intent(v.getContext(), Foodlist.class);
+                    Intent intent = ((Activity) v.getContext()).getIntent();
+                    hashto = intent.getStringExtra("hashto");
+                    database = FirebaseDatabase.getInstance();
+                    String s = ""+hashto.hashCode();
+                    account = database.getReference("Organizations/"+s);
+                    DatabaseReference items = account.child("Selected Items");
+                    DatabaseReference hashed = items.child(""+names.get(pos).hashCode());
+                    DatabaseReference name = hashed.child("Food name");
+                    name.setValue(names.get(pos));
+
+                    Toast.makeText(v.getContext(), "Added "+names.get(pos)+"!", Toast.LENGTH_LONG);
+
+//                    Intent intent2 = new Intent(v.getContext(), FoodListFinal.class);
 ////                    Log.d("0","VIEW\n\n"+names.get(pos));
 //                    String name = names.get(pos);
-//                    String quantity = quantities.get(pos);
 //
 //                    intent.putExtra("name",name);
-//                    intent.putExtra("quantity",quantity);
+//                    intent.putExtra("username", username);
+////                    intent.putExtra("image",image.toString());
 //
 //                    v.getContext().startActivity(intent);
                 }

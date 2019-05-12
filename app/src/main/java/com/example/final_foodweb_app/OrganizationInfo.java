@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class OrganizationInfo extends AppCompatActivity {
     private Button available_items, view_pickups, logout;
-    private String username;
+    private String username, hashto;
 
 
     @Override
@@ -17,6 +17,7 @@ public class OrganizationInfo extends AppCompatActivity {
         setContentView(R.layout.organizationinfo);
         Intent intent = getIntent();
         username = intent.getStringExtra("login");
+        hashto = intent.getStringExtra("hashto");
         available_items = findViewById(R.id.available_button);
         view_pickups = findViewById(R.id.view_pickups);
         logout = findViewById(R.id.logout);
@@ -25,6 +26,7 @@ public class OrganizationInfo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(OrganizationInfo.this, Organizationitems.class);
                 intent.putExtra("items",username);
+                intent.putExtra("hashto", hashto);
                 startActivity(intent);
             }
         });

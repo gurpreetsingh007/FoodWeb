@@ -15,6 +15,9 @@
 
         <activity android:name=".Foodlist"
             android:label="Food list"></activity>
+        <activity android:name=".FoodListFinal"
+            android:label=" "
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".donations_expanded"
             android:label=" "
             android:screenOrientation="portrait"></activity>

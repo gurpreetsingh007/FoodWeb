@@ -13,6 +13,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,11 +36,12 @@ public class Foodlist extends AppCompatActivity {
     private ArrayList<String> hashingfood = new ArrayList<>();
 
     private String defaultlogo = "https://i.redd.it/mgbymkbaleu21.jpg";
-    private String username;
+    private String username, hashto;
     private Button additems;
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+    DatabaseReference account;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +49,9 @@ public class Foodlist extends AppCompatActivity {
         setContentView(R.layout.food_list);
         Intent intent = getIntent();
         username = intent.getStringExtra("items");
+        //username outputs restaurant you selected
+        hashto = intent.getStringExtra("hashto");
+        System.out.println("From foodlist: "+"hashto is: "+ hashto);
         additems = findViewById(R.id.button);
 
 
@@ -89,17 +94,31 @@ public class Foodlist extends AppCompatActivity {
         });
 
 
-        additems.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        additems.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent currintent = getIntent();
+//                Bundle extras = currintent.getExtras();
+//                String name = (String) extras.get("name");
+//
+//                if (name == null){
+//                    Toast.makeText(Foodlist.this, "Select an item.", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    database = FirebaseDatabase.getInstance();
+//                    String s = ""+username.hashCode();
+//                    databaseReference = database.getReference("Organizations/"+s);
+//                    DatabaseReference r_menu = databaseReference.child("Selected Items");
+//                    DatabaseReference items = r_menu.child("Name");
+//                    items.setValue(name);
+//                }
+//
+//            }
+//        });
     }
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.food_my_recycler_view);
-        FoodlistAdapter adapter = new FoodlistAdapter(this,mNames,mImageUrls,mQuantities);
+        FoodlistAdapter adapter = new FoodlistAdapter(this,mNames,mImageUrls,mQuantities,hashto);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

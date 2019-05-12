@@ -33,7 +33,7 @@ public class Organizationitems extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private String[] myDataset;
-    private String username;
+    private String username, hashto;
 
 
     private ArrayList<String> mNames = new ArrayList<>();
@@ -50,6 +50,7 @@ public class Organizationitems extends AppCompatActivity {
         setContentView(R.layout.organizationitems);
         Intent intent = getIntent();
         username = intent.getStringExtra("items");
+        hashto = intent.getStringExtra("hashto");
         initImageBitmaps();
 
     }
@@ -112,7 +113,7 @@ public class Organizationitems extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.my_recycler_view);
-        MyAdapter adapter = new MyAdapter(this,mNames,mImageUrls,username);
+        MyAdapter adapter = new MyAdapter(this,mNames,mImageUrls,username, hashto);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
