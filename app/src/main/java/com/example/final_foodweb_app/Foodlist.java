@@ -37,7 +37,6 @@ public class Foodlist extends AppCompatActivity {
 
     private String defaultlogo = "https://i.redd.it/mgbymkbaleu21.jpg";
     private String username, hashto;
-    private Button additems;
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
@@ -52,7 +51,6 @@ public class Foodlist extends AppCompatActivity {
         //username outputs restaurant you selected
         hashto = intent.getStringExtra("hashto");
         System.out.println("From foodlist: "+"hashto is: "+ hashto);
-        additems = findViewById(R.id.button);
 
 
         database = FirebaseDatabase.getInstance();
@@ -118,7 +116,7 @@ public class Foodlist extends AppCompatActivity {
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.food_my_recycler_view);
-        FoodlistAdapter adapter = new FoodlistAdapter(this,mNames,mImageUrls,mQuantities,hashto);
+        FoodlistAdapter adapter = new FoodlistAdapter(this,mNames,mImageUrls,mQuantities,hashto,username);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

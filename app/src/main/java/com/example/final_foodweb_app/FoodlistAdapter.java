@@ -27,16 +27,17 @@ public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyView
     private ArrayList<String> food_names;
     private ArrayList<Bitmap> food_images;
     private ArrayList<String> food_quantities;
-    private String username;
+    private String username, restName;
     private Context mContext;
 
     public FoodlistAdapter(Context mContext,ArrayList<String> names, ArrayList<Bitmap> images,
-                           ArrayList<String> quantities, String username) {
+                           ArrayList<String> quantities, String username, String restName) {
         this.food_names = names;
         this.food_images = images;
         this.mContext = mContext;
         this.food_quantities = quantities;
         this.username = username;
+        this.restName = restName;
     }
 
 
@@ -44,7 +45,7 @@ public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.food_list_recycler,viewGroup,false);
-        MyViewHolder myViewHolder = new MyViewHolder(view,food_names,food_quantities, username);
+        MyViewHolder myViewHolder = new MyViewHolder(view,food_names,food_quantities, username, restName);
         return myViewHolder;
     }
 
@@ -76,7 +77,7 @@ public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyView
 
 
 
-        public MyViewHolder(View v, final ArrayList<String> names, final ArrayList<String> quantities, final String username) {
+        public MyViewHolder(View v, final ArrayList<String> names, final ArrayList<String> quantities, final String email, final String restName) {
             super(v);
             name = v.findViewById(R.id.food_name);
             quantity = v.findViewById(R.id.food_quantity);
@@ -94,7 +95,8 @@ public class FoodlistAdapter extends RecyclerView.Adapter<FoodlistAdapter.MyView
                     String s = ""+hashto.hashCode();
                     account = database.getReference("Organizations/"+s);
                     DatabaseReference items = account.child("Selected Items");
-                    DatabaseReference hashed = items.child(""+names.get(pos).hashCode());
+                    DatabaseReference selectedRest = items.child(""+restName);
+                    DatabaseReference hashed = selectedRest.child(""+names.get(pos));
                     DatabaseReference name = hashed.child("Food name");
                     name.setValue(names.get(pos));
 
